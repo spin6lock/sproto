@@ -27,11 +27,11 @@ struct sproto_type;
 #define SPROTO_CB_NIL -2
 #define SPROTO_CB_NOARRAY -3
 
-//#define SPROTO_TABLE_POOL
+//#define SPROTO_TABLE_POOL "POOL_GET"
 //#define SPROTO_WEAK_TYPE
 
 #ifdef SPROTO_TABLE_POOL
-    #define SPROTO_NEWTABLE(L) {lua_getglobal(L,"POOL_GET");lua_call(L,0,1);}
+    #define SPROTO_NEWTABLE(L) {lua_getglobal(L, SPROTO_TABLE_POOL);lua_call(L,0,1);}
 #else
     #define SPROTO_NEWTABLE(L) lua_newtable(L)
 #endif
